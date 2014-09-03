@@ -112,7 +112,7 @@ function BWWC__MATH_generate_bitcoin_address_from_mpk ($master_public_key, $key_
   $pad = '';
   $n = 0;
   while ($addr[$n++] == "\x41")
-	$pad .= 'T';
+	$pad .= '';
 
   return $pad.$encoded;
 }
