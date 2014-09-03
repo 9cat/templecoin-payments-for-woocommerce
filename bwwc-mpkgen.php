@@ -13,6 +13,7 @@
 // apparently the gmp module is much faster
 // base2dec needs to be written for gmp as phpecc is missing it
 
+	
 
 // search and replace 'bcmath_Utils::bc' with 'gmp_Utils::gmp_' to use much faster gmp module
 //===========================================================================

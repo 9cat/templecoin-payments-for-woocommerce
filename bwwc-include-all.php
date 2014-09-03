@@ -8,14 +8,15 @@ http://www.bitcoinway.com/
 // Global definitions
 if (!defined('BWWC_PLUGIN_NAME'))
   {
-  define('BWWC_VERSION',           '3.02');
+  define('BWWC_VERSION',           '3.10.1');
 
   //-----------------------------------------------
   define('BWWC_EDITION',           'Standard');    
 
+
   //-----------------------------------------------
   define('BWWC_SETTINGS_NAME',     'BWWC-Settings');
-  define('BWWC_PLUGIN_NAME',       'Bitcoin Payments for WooCommerce');   
+  define('BWWC_PLUGIN_NAME',       'Templecoin Payments for WooCommerce');   
 
 
   // i18n plugin domain for language files
