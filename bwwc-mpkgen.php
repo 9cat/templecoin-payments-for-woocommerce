@@ -85,7 +85,7 @@ function BWWC__MATH_generate_bitcoin_address_from_mpk ($master_public_key, $key_
 		$keystr = "\x04" . str_pad(bcmath_Utils::dec2base($pt->getX(), 256), 32, "\x0", STR_PAD_LEFT) . str_pad(bcmath_Utils::dec2base($pt->getY(), 256), 32, "\x0", STR_PAD_LEFT);
 	}
 
-	$vh160 =  "\x0".hash('ripemd160', hash('sha256', $keystr, TRUE), TRUE);
+	$vh160 =  "\x41".hash('ripemd160', hash('sha256', $keystr, TRUE), TRUE);
 	$addr = $vh160.substr(hash('sha256', hash('sha256', $vh160, TRUE), TRUE), 0, 4);
 
 	// base58 conversion
@@ -110,8 +110,8 @@ function BWWC__MATH_generate_bitcoin_address_from_mpk ($master_public_key, $key_
   $encoded = $alphabet[intval($num)] . $encoded;
   $pad = '';
   $n = 0;
-  while ($addr[$n++] == "\x0")
-	$pad .= '1';
+  while ($addr[$n++] == "\x41")
+	$pad .= 'T';
 
   return $pad.$encoded;
 }

@@ -458,12 +458,12 @@ function BWWC__getreceivedbyaddress_info ($btc_address, $required_confirmations=
    }
 
    // Help: http://blockexplorer.com/
-   $funds_received = BWWC__file_get_contents ('http://blockexplorer.com/q/getreceivedbyaddress/' . $btc_address . $confirmations_url_part_bec, true, $api_timeout);
+   $funds_received = BWWC__file_get_contents ('http://explorer.templecoin.com/chain/Templecoin/q/addressbalance/' . $btc_address . $confirmations_url_part_bec, true, $api_timeout);
    if (!is_numeric($funds_received))
    {
       $blockexplorer_com_failure_reply = $funds_received;
       // Help: http://blockchain.info/q
-      $funds_received = BWWC__file_get_contents ('http://blockchain.info/q/getreceivedbyaddress/' . $btc_address, true, $api_timeout);
+      $funds_received = BWWC__file_get_contents ('http://search.templecoin.com/chain/Templecoin/q/addressbalance/' . $btc_address, true, $api_timeout);
       $blockchain_info_failure_reply = $funds_received;
 
 		  if (is_numeric($funds_received))
