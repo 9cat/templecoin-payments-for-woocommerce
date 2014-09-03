@@ -1,14 +1,22 @@
 <?php
 /*
-
-
-Plugin Name: Bitcoin Payments for WooCommerce
-Plugin URI: http://www.bitcoinway.com/
-Description: Bitcoin Payments for WooCommerce plugin allows you to accept payments in bitcoins for physical and digital products at your WooCommerce-powered online store.
-Version: 3.10
-Author: BitcoinWay
-Author URI: http://www.bitcoinway.com/
+Plugin Name: Templecoin Payments for WooCommerce
+Plugin URI: http://www.9cat.net
+Description: Templecoin Payments for WooCommerce plugin allows you to accept payments in templecoin for physical and digital products at your WooCommerce-powered online store.
+Version: 3.10.3
+Author: Temple
+Author URI: http://www.9cat.net/
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
+
+Fork:
+-Plugin Name: Bitcoin Payments for WooCommerce
+-Plugin URI: http://www.bitcoinway.com/
+-Description: Bitcoin Payments for WooCommerce plugin allows you to accept payments in bitcoins for physical and digital products at your WooCommerce-powered online store.
+-Version: 3.10
+-Author: BitcoinWay
+-Author URI: http://www.bitcoinway.com/
+-License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
+
 
 */
 
