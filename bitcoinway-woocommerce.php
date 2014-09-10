@@ -3,7 +3,7 @@
 Plugin Name: Templecoin Payments for WooCommerce
 Plugin URI: http://www.9cat.net
 Description: Templecoin Payments for WooCommerce plugin allows you to accept payments in templecoin for physical and digital products at your WooCommerce-powered online store.
-Version: 3.10.3
+Version: 3.10.x
 Author: Temple
 Author URI: http://www.9cat.net/
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
@@ -126,11 +126,11 @@ function BWWC_create_menu()
     // http://www.fileformat.info/info/unicode/char/e3f/index.htm
     add_menu_page (
         __('Woo Bitcoin', BWWC_I18N_DOMAIN),                    // Page title
-        __('Bitcoin', BWWC_I18N_DOMAIN),                        // Menu Title - lower corner of admin menu
+        __('Templecoin', BWWC_I18N_DOMAIN),                        // Menu Title - lower corner of admin menu
         'administrator',                                        // Capability
         'bwwc-settings',                                        // Handle - First submenu's handle must be equal to parent's handle to avoid duplicate menu entry.
         'BWWC__render_general_settings_page',                   // Function
-        plugins_url('/images/bitcoin_16x.png', __FILE__)                // Icon URL
+        plugins_url('/images/templecoin_16x.png', __FILE__)                // Icon URL
         );
 
     add_submenu_page (
@@ -141,7 +141,7 @@ function BWWC_create_menu()
         'bwwc-settings',                                        // Handle - First submenu's handle must be equal to parent's handle to avoid duplicate menu entry.
         'BWWC__render_general_settings_page'                    // Function
         );
-
+/*
     add_submenu_page (
         'bwwc-settings',                                        // Parent
         __("BitcoinWay Plugin Advanced Settings", BWWC_I18N_DOMAIN),       // Page title
@@ -150,6 +150,7 @@ function BWWC_create_menu()
         'bwwc-settings-advanced',                        // Handle - First submenu's handle must be equal to parent's handle to avoid duplicate menu entry.
         'BWWC__render_advanced_settings_page'            // Function
         );
+	*/
 }
 //===========================================================================
 

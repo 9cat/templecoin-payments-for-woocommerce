@@ -12,7 +12,7 @@ http://www.bitcoinway.com/
       $order_info =
          array (
             'order_id'        => $order_id,
-            'order_total'     => $order_total_in_btc,
+            'order_total'     => $order_total_in_tpc,
             'order_datetime'  => date('Y-m-d H:i:s T'),
             'requested_by_ip' => @$_SERVER['REMOTE_ADDR'],
             );
@@ -201,7 +201,7 @@ function BWWC__get_bitcoin_address_for_payment__electrum ($electrum_mpk, $order_
          $order_info =
          array (
             'order_id'     => $order_id,
-            'order_total'  => $order_total_in_btc,
+            'order_total'  => $order_total_in_tpc,
             'order_datetime'  => date('Y-m-d H:i:s T'),
             'requested_by_ip' => @$_SERVER['REMOTE_ADDR'],
             );
@@ -216,7 +216,7 @@ function BWWC__get_bitcoin_address_for_payment__electrum ($electrum_mpk, $order_
                   // All orders placed on this address in reverse chronological order
                   array (
                      'order_id'     => $order_id,
-                     'order_total'  => $order_total_in_btc,
+                     'order_total'  => $order_total_in_tpc,
                      'order_datetime'  => date('Y-m-d H:i:s T'),
                      'requested_by_ip' => @$_SERVER['REMOTE_ADDR'],
                   ),
@@ -463,7 +463,7 @@ function BWWC__getreceivedbyaddress_info ($btc_address, $required_confirmations=
    {
       $blockexplorer_com_failure_reply = $funds_received;
       // Help: http://blockchain.info/q
-      $funds_received = BWWC__file_get_contents ('http://search.templecoin.com/chain/Templecoin/q/addressbalance/' . $btc_address, true, $api_timeout);
+      $funds_received = BWWC__file_get_contents ('http://explorer.templecoin.com/chain/Templecoin/q/addressbalance/' . $btc_address, true, $api_timeout);
       $blockchain_info_failure_reply = $funds_received;
 
 		  if (is_numeric($funds_received))
@@ -571,8 +571,11 @@ function BWWC__generate_temporary_bitcoin_address__blockchain_info ($forwarding_
 
 function BWWC__get_exchange_rate_per_bitcoin ($currency_code, $rate_retrieval_method = 'getfirst', $rate_type = 'vwap', $get_ticker_string=false)
 {
-   if ($currency_code == 'BTC')
+   if ($currency_code == 'TPC' || $currency_code == 'USD')
       return "1.00";   // 1:1
+	if ($currency_code == 'CNY' ) 
+	  return "6.29"; 
+    return "0.0001"; // TODO: implement the exchange rate in the future.
 
 //  Do not limit support with present list of currencies. This was originally created because exchange rate APIs did not support many, but today
 //	they do support many more currencies, hence this check is removed for now.

@@ -156,7 +156,7 @@ function BWWC_cron_job_worker ($hardcron=false)
 		                  // All orders placed on this address in reverse chronological order
 		                  array (
 		                     'order_id'     => $order_id,
-		                     'order_total'  => $order_total_in_btc,
+		                     'order_total'  => $order_total_in_tpc,
 		                     'order_datetime'  => date('Y-m-d H:i:s T'),
 		                     'requested_by_ip' => @$_SERVER['REMOTE_ADDR'],
 		                  ),

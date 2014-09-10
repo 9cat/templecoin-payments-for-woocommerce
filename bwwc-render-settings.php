@@ -93,7 +93,7 @@ function BWWC__render_general_settings_page_html ()
               <p class="description">If checked - all plugin-specific settings, database tables and data will be removed from Wordpress database upon plugin uninstall (but not upon deactivation or upgrade).</p>
             </td>
         </tr>
-
+<?php/*
         <tr valign="top">
             <th scope="row">Extreme privacy mode enabled?</th>
             <td>
@@ -114,7 +114,7 @@ function BWWC__render_general_settings_page_html ()
               </p>
             </td>
         </tr>
-
+*/?>
         <tr valign="top">
             <th scope="row">Cron job type:</th>
             <td>
@@ -124,7 +124,7 @@ function BWWC__render_general_settings_page_html ()
               </select>
               <p class="description">
                 <?php if ($bwwc_settings['enable_soft_cron_job'] != '1') echo '<p style="background-color:#FFC;color:#2A2;"><b>NOTE</b>: Hard Cron job is enabled: make sure to follow instructions below to enable hard cron job at your hosting panel.</p>'; ?>
-                Cron job will take care of all regular bitcoin payment processing tasks, like checking if payments are made and automatically completing the orders.<br />
+                Cron job will take care of all regular templecoin payment processing tasks, like checking if payments are made and automatically completing the orders.<br />
                 <b>Soft Cron</b>: - Wordpress-driven (runs on behalf of a random site visitor).
                 <br />
                 <b>Hard Cron</b>: - Cron job driven by the website hosting system/server (usually via CPanel). <br />
@@ -132,7 +132,7 @@ function BWWC__render_general_settings_page_html ()
                 <?php echo '<tt style="background-color:#FFA;color:#B00;padding:0px 6px;">wget -O /dev/null ' . $g_BWWC__cron_script_url . '?hardcron=1</tt>'; ?>
                 <br /><u>Note:</u> You will need to deactivate/reactivate plugin after changing this setting for it to have effect.<br />
                 "Hard" cron jobs may not be properly supported by all hosting plans (many shared hosting plans has restrictions in place).
-                <br />For secure, fast hosting service optimized for wordpress and 100% compatibility with WooCommerce and Bitcoin payments we recommend <b><a href="http://hostrum.com/" target="_blank">Hostrum Hosting</a></b>.
+                <br />For secure, fast hosting service optimized for wordpress and 100% compatibility with WooCommerce and Templecoin payments we recommend <b><a href="http://www.vultr.com/?ref=6804273" target="_blank">Vultr VPS</a> Or <a href="https://www.digitalocean.com/?refcode=92b620dfcd3a">DigitalOcean VPS</b>.
               </p>
             </td>
         </tr>

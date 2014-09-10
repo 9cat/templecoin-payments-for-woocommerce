@@ -66,12 +66,12 @@ function BWWC__GetPluginNameVersionEdition($please_donate = true)
             BWWC_EDITION . '&nbsp;</span> edition]' .
           '</h2>';
 
-
+/*
   if ($please_donate)
   {
     $return_data .= '<p style="border:1px solid #890e4e;padding:5px 10px;color:#004400;background-color:#FFF;"><u>Please donate BTC to</u>:&nbsp;&nbsp;<span style="color:#d21577;font-size:110%;font-weight:bold;">12fFTMkeu3mcunCtGHtWb7o5BcWA9eFx7R</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>or via Paypal to</u>:&nbsp;&nbsp;<span style="color:#d21577;font-size:110%;font-weight:bold;">donate@bitcoinway.com</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:95%;">All supporters will be acknowledged and listed within plugin repository. Please note that if you ever donated - you may use your donation as a credit toward <a href="' . BWWC__GetProUrl() . '"><b>Pro version</b></a>.</span></p>';
   }
-
+*/
   return $return_data;
 }
 //===========================================================================

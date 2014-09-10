@@ -43,9 +43,9 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 		public function __construct()
 		{
       $this->id				= 'bitcoin';
-      $this->icon 			= plugins_url('/images/btc_buyitnow_32x.png', __FILE__);	// 32 pixels high
+      $this->icon 			= plugins_url('/images/tpc_buyitnow_32x.png', __FILE__);	// 32 pixels high
       $this->has_fields 		= false;
-      $this->method_title     = __( 'Bitcoin', 'woocommerce' );
+      $this->method_title     = __( 'Templecoin', 'woocommerce' );
 
 			// Load the settings.
 			$this->init_settings();
@@ -104,10 +104,10 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 	    	// Validate settings
 	    	if (!$this->service_provider)
 	    	{
-	    		$reason_message = __("Bitcoin Service Provider is not selected", 'woocommerce');
+	    		$reason_message = __("Templecoin Service Provider is not selected", 'woocommerce');
 	    		$valid = false;
 	    	}
-	    	else if ($this->service_provider=='blockchain.info')
+	    	/*else if ($this->service_provider=='blockchain.info')
 	    	{
 	    		if ($this->bitcoin_addr_merchant == '')
 	    		{
@@ -119,7 +119,7 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 		    		$reason_message = __("Your personal bitcoin address is invalid. The address specified is Bitcoinway.com's donation address :)", 'woocommerce');
 		    		$valid = false;
 	    		}
-	    	}
+	    	}*/
 	    	else if ($this->service_provider=='electrum-wallet')
 	    	{
 	    		if (!$this->electrum_master_public_key)
@@ -228,11 +228,11 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 	    	$payment_instructions = '
 <table class="bwwc-payment-instructions-table" id="bwwc-payment-instructions-table">
   <tr class="bpit-table-row">
-    <td colspan="2">' . __('Please send your bitcoin payment as follows:', 'woocommerce') . '</td>
+    <td colspan="2">' . __('Please send your templecoin payment as follows:', 'woocommerce') . '</td>
   </tr>
   <tr class="bpit-table-row">
     <td style="vertical-align:middle;" class="bpit-td-name bpit-td-name-amount">
-      ' . __('Amount', 'woocommerce') . ' (<strong>BTC</strong>):
+      ' . __('Amount', 'woocommerce') . ' (<strong>TPC</strong>):
     </td>
     <td class="bpit-td-value bpit-td-value-amount">
       <div style="border:1px solid #FCCA09;padding:2px 6px;margin:2px;background-color:#FCF8E3;border-radius:4px;color:#CC0000;font-weight: bold;font-size: 120%;">
@@ -273,7 +273,7 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 
 	    	$payment_instructions_description = '
 						  <p class="description" style="width:50%;float:left;width:49%;">
-					    	' . __( 'Specific instructions given to the customer to complete Bitcoins payment.<br />You may change it, but make sure these tags will be present: <b>{{{BITCOINS_AMOUNT}}}</b>, <b>{{{BITCOINS_ADDRESS}}}</b> and <b>{{{EXTRA_INSTRUCTIONS}}}</b> as these tags will be replaced with customer - specific payment details.', 'woocommerce' ) . '
+					    	' . __( 'Specific instructions given to the customer to complete Templecoins payment.<br />You may change it, but make sure these tags will be present: <b>{{{BITCOINS_AMOUNT}}}</b>, <b>{{{BITCOINS_ADDRESS}}}</b> and <b>{{{EXTRA_INSTRUCTIONS}}}</b> as these tags will be replaced with customer - specific payment details.', 'woocommerce' ) . '
 						  </p>
 						  <p class="description" style="width:50%;float:left;width:49%;">
 					    	Payment Instructions, original template (for reference):<br />
@@ -287,26 +287,26 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 				'enabled' => array(
 								'title' => __( 'Enable/Disable', 'woocommerce' ),
 								'type' => 'checkbox',
-								'label' => __( 'Enable Bitcoin Payments', 'woocommerce' ),
+								'label' => __( 'Enable Templecoin Payments', 'woocommerce' ),
 								'default' => 'yes'
 							),
 				'title' => array(
 								'title' => __( 'Title', 'woocommerce' ),
 								'type' => 'text',
 								'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce' ),
-								'default' => __( 'Bitcoin Payment', 'woocommerce' )
+								'default' => __( 'Templecoin Payment', 'woocommerce' )
 							),
 
 				'service_provider' => array(
-								'title' => __('Bitcoin service provider', 'woocommerce' ),
+								'title' => __('Templecoin service provider', 'woocommerce' ),
 								'type' => 'select',
 								'options' => array(
 									''  => __( 'Please choose your provider', 'woocommerce' ),
 									'electrum-wallet'  => __( 'Your own Electrum wallet', 'woocommerce' ),
-									'blockchain.info' => __( 'Blockchain.info API (deprecated - use Electrum instead)', 'woocommerce' ),
+									//'blockchain.info' => __( 'Blockchain.info API (deprecated - use Electrum instead)', 'woocommerce' ),
 									),
 								'default' => '',
-								'description' => $this->service_provider?__("Please select your Bitcoin service provider and press [Save changes]. Then fill-in necessary details and press [Save changes] again.<br />Recommended setting: <b>Your own Electrum wallet</b>", 'woocommerce'):__("Recommended setting: 'Your own Electrum wallet'. <a href='http://electrum.org/' target='_blank'>Free download of Electrum wallet here</a>.", 'woocommerce'),
+								'description' => $this->service_provider?__("Please select your Templecoin service provider and press [Save changes]. Then fill-in necessary details and press [Save changes] again.<br />Recommended setting: <b>Your own Electrum wallet</b>", 'woocommerce'):__("Recommended setting: 'Your own Electrum wallet'. <a href='http://templecoin.org/' target='_blank'>Free download of Electrum wallet here</a>.", 'woocommerce'),
 							),
 
 				'electrum_master_public_key' => array(
@@ -315,53 +315,54 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 								'default' => "",
 								'css'     => $this->service_provider!='electrum-wallet'?'display:none;':'',
 								'disabled' => $this->service_provider!='electrum-wallet'?true:false,
-								'description' => $this->service_provider!='electrum-wallet'?__('Available when Bitcoin service provider is set to: <b>Your own Electrum wallet</b>.', 'woocommerce'):__('1. Launch <a href="http://electrum.org/" target="_blank">Electrum wallet</a> and get Master Public Key value from:<br />Wallet -> Master Public Key, or:<br />older version of Electrum: Preferences -> Import/Export -> Master Public Key -> Show.<br />Copy long number string and paste it in this field.<br />
+								'description' => $this->service_provider!='electrum-wallet'?__('Available when Templecoin service provider is set to: <b>Your own Electrum wallet</b>.', 'woocommerce'):__('1. Launch <a href="http://templecoin.org/" target="_blank">Electrum wallet</a> and get Master Public Key value from:<br />Wallet -> Master Public Key, or:<br />older version of Electrum: Preferences -> Import/Export -> Master Public Key -> Show.<br />Copy long number string and paste it in this field.<br />
 									2. Change "gap limit" value to bigger value (to make sure youll see the total balance on your wallet):<br />
 									Click on "Console" tab and run this command: <tt>wallet.storage.put(\'gap_limit\',100)</tt>
 									<br />Then restart Electrum wallet to activate new gap limit. You may do it later at any time - gap limit does not affect functionlity of your online store.
-									<br />If your online store receives lots of orders in bitcoins - you might need to set gap limit to even bigger value.
+									<br />If your online store receives lots of orders in templecoins - you might need to set gap limit to even bigger value.
 									', 'woocommerce'),
 							),
 
-				'bitcoin_addr_merchant' => array(
-								'title' => __( 'Your personal bitcoin address', 'woocommerce' ),
+			/*	'bitcoin_addr_merchant' => array(
+								'title' => __( 'Your personal templecoin address', 'woocommerce' ),
 								'type' => 'text',
 								'css'     => $this->service_provider!='blockchain.info'?'display:none;':'',
 								'disabled' => $this->service_provider!='blockchain.info'?true:false,
-								'description' => $this->service_provider!='blockchain.info'?__('Available when Bitcoin service provider is set to: <b>Blockchain.info</b>', 'woocommerce'):__( 'Your own bitcoin address (such as: 1H9uAP3x439YvQDoKNGgSYCg3FmrYRzpD2) - where you would like the payment to be sent. When customer sends you payment for the product - it will be automatically forwarded to this address by blockchain.info APIs.', 'woocommerce' ),
+								'description' => '',
 								'default' => '',
+								
 							),
-
-
+*/
 				'confirmations' => array(
 								'title' => __( 'Number of confirmations required before accepting payment', 'woocommerce' ),
 								'type' => 'text',
-								'description' => __( 'After a transaction is broadcast to the Bitcoin network, it may be included in a block that is published to the network. When that happens it is said that one <a href="https://en.bitcoin.it/wiki/Confirmation" target="_blank">confirmation has occurred</a> for the transaction. With each subsequent block that is found, the number of confirmations is increased by one. To protect against double spending, a transaction should not be considered as confirmed until a certain number of blocks confirm, or verify that transaction. <br />6 is considered very safe number of confirmations, although it takes longer to confirm.', 'woocommerce' ),
+								'description' => __( 'After a transaction is broadcast to the Templecoin network, it may be included in a block that is published to the network. When that happens it is said that one <a href="https://en.bitcoin.it/wiki/Confirmation" target="_blank">confirmation has occurred</a> for the transaction. With each subsequent block that is found, the number of confirmations is increased by one. To protect against double spending, a transaction should not be considered as confirmed until a certain number of blocks confirm, or verify that transaction. <br />6 is considered very safe number of confirmations, although it takes longer to confirm.', 'woocommerce' ),
 								'default' => '6',
 							),
 
-
+			/*
 				'exchange_rate_type' => array(
 								'title' => __('Exchange rate calculation type', 'woocommerce' ),
 								'type' => 'select',
-								'disabled' => $store_currency_code=='BTC'?true:false,
+								'disabled' => $store_currency_code=='TPC'?true:false,
 								'options' => array(
 									'vwap' => __( 'Weighted Average', 'woocommerce' ),
 									'realtime' => __( 'Real time', 'woocommerce' ),
 									'bestrate' => __( 'Most profitable', 'woocommerce' ),
 									),
 								'default' => 'vwap',
-								'description' => ($store_currency_code=='BTC'?__('<span style="color:red;"><b>Disabled</b>: Applies only for stores with non-bitcoin default currency.</span><br />', 'woocommerce'):'') .
+								'description' => ($store_currency_code=='TPC'?__('<span style="color:red;"><b>Disabled</b>: Applies only for stores with non-templecoin default currency.</span><br />', 'woocommerce'):'') .
 									__('<b>Weighted Average</b> (recommended): <a href="http://en.wikipedia.org/wiki/Volume-weighted_average_price" target="_blank">weighted average</a> rates polled from a number of exchange services<br />
 										<b>Real time</b>: the most recent transaction rates polled from a number of exchange services.<br />
 										<b>Most profitable</b>: pick better exchange rate of all indicators (most favorable for merchant). Calculated as: MIN (Weighted Average, Real time)') . '<br />' . $currency_ticker,
 							),
+				*/
 				'exchange_multiplier' => array(
 								'title' => __('Exchange rate multiplier', 'woocommerce' ),
 								'type' => 'text',
-								'disabled' => $store_currency_code=='BTC'?true:false,
-								'description' => ($store_currency_code=='BTC'?__('<span style="color:red;"><b>Disabled</b>: Applies only for stores with non-bitcoin default currency.</span><br />', 'woocommerce'):'') .
-									__('Extra multiplier to apply to convert store default currency to bitcoin price. <br />Example: <b>1.05</b> - will add extra 5% to the total price in bitcoins. May be useful to compensate merchant\'s loss to fees when converting bitcoins to local currency, or to encourage customer to use bitcoins for purchases (by setting multiplier to < 1.00 values).', 'woocommerce' ),
+								'disabled' => $store_currency_code=='TPC'?true:false,
+								'description' => ($store_currency_code=='TPC'?__('<span style="color:red;"><b>Disabled</b>: Applies only for stores with non-bitcoin default currency.</span><br />', 'woocommerce'):'') .
+									__('Extra multiplier to apply to convert store default currency to templecoin price. <br />Example: <b>1.05</b> - will add extra 5% to the total price in templecoins. May be useful to compensate merchant\'s loss to fees when converting templecoins to local currency, or to encourage customer to use templecoins for purchases (by setting multiplier to < 1.00 values).', 'woocommerce' ),
 								'default' => '1.00',
 							),
 				'description' => array(
@@ -376,6 +377,7 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 								'description' => $payment_instructions_description,
 								'default' => $payment_instructions,
 							),
+							
 				);
 	    }
 		//-------------------------------------------------------------------
@@ -410,15 +412,16 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 
 			// After defining the options, we need to display them too; thats where this next function comes into play:
 	    	?>
-	    	<h3><?php _e('Bitcoin Payment', 'woocommerce'); ?></h3>
+	    	<h3><?php _e('Templecoin Payment', 'woocommerce'); ?></h3>
 	    	<p>
-	    		<?php _e('Allows to accept payments in bitcoin. <a href="https://en.bitcoin.it/wiki/Main_Page" target="_blank">Bitcoins</a> are peer-to-peer, decentralized digital currency that enables instant payments from anyone to anyone, anywhere in the world
-<p style="border:1px solid #890e4e;padding:5px 10px;color:#004400;background-color:#FFF;"><u>Please donate BTC to</u>:&nbsp;&nbsp;<span style="color:#d21577;font-size:110%;font-weight:bold;">12fFTMkeu3mcunCtGHtWb7o5BcWA9eFx7R</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>or via Paypal to</u>:&nbsp;&nbsp;<span style="color:#d21577;font-size:110%;font-weight:bold;">donate@bitcoinway.com</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:95%;">(All supporters will be acknowledged and listed within plugin repository)</span></p>
-	    			',
+			
+			
+	    		<?php
+				_e('Allows to accept payments in templecoin. <a href="http://templecoin.org" target="_blank">Templecoins</a> are peer-to-peer, decentralized digital currency that enables instant payments from anyone to anyone, anywhere in the world',
 	    				'woocommerce'); ?>
 	    	</p>
 	    	<?php
-	    		echo $store_valid ? ('<p style="border:1px solid #DDD;padding:5px 10px;font-weight:bold;color:#004400;background-color:#CCFFCC;">' . __('Bitcoin payment gateway is operational','woocommerce') . '</p>') : ('<p style="border:1px solid #DDD;padding:5px 10px;font-weight:bold;color:#EE0000;background-color:#FFFFAA;">' . __('Bitcoin payment gateway is not operational: ','woocommerce') . $validation_msg . '</p>');
+	    		echo $store_valid ? ('<p style="border:1px solid #DDD;padding:5px 10px;font-weight:bold;color:#004400;background-color:#CCFFCC;">' . __('Templecoin payment gateway is operational','woocommerce') . '</p>') : ('<p style="border:1px solid #DDD;padding:5px 10px;font-weight:bold;color:#EE0000;background-color:#FFFFAA;">' . __('Templecoin payment gateway is not operational: ','woocommerce') . $validation_msg . '</p>');
 	    	?>
 	    	<table class="form-table">
 	    	<?php
@@ -490,19 +493,19 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
       			exit ('<h2 style="color:red;">' . $msg . '</h2>');
 			}
 
-			$order_total_in_btc   = ($order->get_total() / $exchange_rate);
+			$order_total_in_tpc   = ($order->get_total() / $exchange_rate);
 			if (get_woocommerce_currency() != 'BTC')
 				// Apply exchange rate multiplier only for stores with non-bitcoin default currency.
-				$order_total_in_btc = $order_total_in_btc * $this->exchange_multiplier;
+				$order_total_in_tpc = $order_total_in_tpc * $this->exchange_multiplier;
 
-			$order_total_in_btc   = sprintf ("%.8f", $order_total_in_btc);
+			$order_total_in_tpc   = sprintf ("%.8f", $order_total_in_tpc);
 
-  		$bitcoins_address = false;
+  		$templecoins_address = false;
 
   		$order_info =
   			array (
   				'order_id'				=> $order_id,
-  				'order_total'			=> $order_total_in_btc,
+  				'order_total'			=> $order_total_in_tpc,
   				'order_datetime'  => date('Y-m-d H:i:s T'),
   				'requested_by_ip'	=> @$_SERVER['REMOTE_ADDR'],
   				);
@@ -527,7 +530,7 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
                'generated_bitcoin_address'   => '1H9uAP3x439YvQDoKNGgSYCg3FmrYRzpD2', // or false
                );
 				*/
-				$bitcoins_address = @$ret_info_array['generated_bitcoin_address'];
+				$templecoins_address = @$ret_info_array['generated_bitcoin_address'];
 			}
 			else if ($this->service_provider == 'electrum-wallet')
 			{
@@ -541,17 +544,17 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
                );
 				*/
 				$ret_info_array = BWWC__get_bitcoin_address_for_payment__electrum ($this->electrum_master_public_key, $order_info);
-				$bitcoins_address = @$ret_info_array['generated_bitcoin_address'];
+				$templecoins_address = @$ret_info_array['generated_bitcoin_address'];
 			}
 
-			if (!$bitcoins_address)
+			if (!$templecoins_address)
 			{
 				$msg = "ERROR: cannot generate bitcoin address for the order: '" . @$ret_info_array['message'] . "'";
       			BWWC__log_event (__FILE__, __LINE__, $msg);
       			exit ('<h2 style="color:red;">' . $msg . '</h2>');
 			}
 
-   		BWWC__log_event (__FILE__, __LINE__, "     Generated unique bitcoin address: '{$bitcoins_address}' for order_id " . $order_id);
+   		BWWC__log_event (__FILE__, __LINE__, "     Generated unique bitcoin address: '{$templecoins_address}' for order_id " . $order_id);
 
 			if ($this->service_provider == 'blockchain.info')
 			{
@@ -564,22 +567,22 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 
      	update_post_meta (
      		$order_id, 			// post id ($order_id)
-     		'order_total_in_btc', 	// meta key
-     		$order_total_in_btc 	// meta value. If array - will be auto-serialized
+     		'order_total_in_tpc', 	// meta key
+     		$order_total_in_tpc 	// meta value. If array - will be auto-serialized
      		);
      	update_post_meta (
      		$order_id, 			// post id ($order_id)
-     		'bitcoins_address',	// meta key
-     		$bitcoins_address 	// meta value. If array - will be auto-serialized
+     		'templecoins_address',	// meta key
+     		$templecoins_address 	// meta value. If array - will be auto-serialized
      		);
      	update_post_meta (
      		$order_id, 			// post id ($order_id)
-     		'bitcoins_paid_total',	// meta key
+     		'templecoins_paid_total',	// meta key
      		"0" 	// meta value. If array - will be auto-serialized
      		);
      	update_post_meta (
      		$order_id, 			// post id ($order_id)
-     		'bitcoins_refunded',	// meta key
+     		'templecoins_refunded',	// meta key
      		"0" 	// meta value. If array - will be auto-serialized
      		);
      	update_post_meta (
@@ -605,7 +608,7 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 			//	Updating the order status:
 
 			// Mark as on-hold (we're awaiting for bitcoins payment to arrive)
-			$order->update_status('on-hold', __('Awaiting bitcoin payment to arrive', 'woocommerce'));
+			$order->update_status('on-hold', __('Awaiting templecoin payment to arrive', 'woocommerce'));
 
 /*
 			///////////////////////////////////////
@@ -661,13 +664,13 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 			$order = new WC_Order($order_id);
 
 			// Assemble detailed instructions.
-			$order_total_in_btc   = get_post_meta($order->id, 'order_total_in_btc',   true); // set single to true to receive properly unserialized array
-			$bitcoins_address = get_post_meta($order->id, 'bitcoins_address', true); // set single to true to receive properly unserialized array
+			$order_total_in_tpc   = get_post_meta($order->id, 'order_total_in_tpc',   true); // set single to true to receive properly unserialized array
+			$templecoins_address = get_post_meta($order->id, 'templecoins_address', true); // set single to true to receive properly unserialized array
 
 
 			$instructions = $this->instructions;
-			$instructions = str_replace ('{{{BITCOINS_AMOUNT}}}',  $order_total_in_btc, $instructions);
-			$instructions = str_replace ('{{{BITCOINS_ADDRESS}}}', $bitcoins_address, 	$instructions);
+			$instructions = str_replace ('{{{BITCOINS_AMOUNT}}}',  $order_total_in_tpc, $instructions);
+			$instructions = str_replace ('{{{BITCOINS_ADDRESS}}}', $templecoins_address, 	$instructions);
 			$instructions =
 				str_replace (
 					'{{{EXTRA_INSTRUCTIONS}}}',
@@ -675,7 +678,7 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 					$this->instructions_multi_payment_str,
 					$instructions
 					);
-            $order->add_order_note( __("Order instructions: price=&#3647;{$order_total_in_btc}, incoming account:{$bitcoins_address}", 'woocommerce'));
+            $order->add_order_note( __("Order instructions: price=&#8366;;{$order_total_in_tpc}, incoming account:{$templecoins_address}", 'woocommerce'));
 
 	        echo wpautop (wptexturize ($instructions));
 		}
@@ -697,13 +700,13 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 	    	if ($order->payment_method !== 'bitcoin') return;
 
 	    	// Assemble payment instructions for email
-			$order_total_in_btc   = get_post_meta($order->id, 'order_total_in_btc',   true); // set single to true to receive properly unserialized array
-			$bitcoins_address = get_post_meta($order->id, 'bitcoins_address', true); // set single to true to receive properly unserialized array
+			$order_total_in_tpc   = get_post_meta($order->id, 'order_total_in_tpc',   true); // set single to true to receive properly unserialized array
+			$templecoins_address = get_post_meta($order->id, 'templecoins_address', true); // set single to true to receive properly unserialized array
 
 
 			$instructions = $this->instructions;
-			$instructions = str_replace ('{{{BITCOINS_AMOUNT}}}',  $order_total_in_btc, 	$instructions);
-			$instructions = str_replace ('{{{BITCOINS_ADDRESS}}}', $bitcoins_address, 	$instructions);
+			$instructions = str_replace ('{{{BITCOINS_AMOUNT}}}',  $order_total_in_tpc, 	$instructions);
+			$instructions = str_replace ('{{{BITCOINS_ADDRESS}}}', $templecoins_address, 	$instructions);
 			$instructions =
 				str_replace (
 					'{{{EXTRA_INSTRUCTIONS}}}',
@@ -782,17 +785,17 @@ function BWWC__plugins_loaded__load_bitcoin_gateway ()
 					foreach ($incoming_payments as $k => $txn_data)
 						$paid_total_so_far += $txn_data['txn_value'];
 
-					update_post_meta ($order_id, 'bitcoins_paid_total', $paid_total_so_far);
+					update_post_meta ($order_id, 'templecoins_paid_total', $paid_total_so_far);
 					//---------------------------
 
-					$order_total_in_btc = get_post_meta($order_id, 'order_total_in_btc', true);
-					if ($paid_total_so_far >= $order_total_in_btc)
+					$order_total_in_tpc = get_post_meta($order_id, 'order_total_in_tpc', true);
+					if ($paid_total_so_far >= $order_total_in_tpc)
 					{
 						BWWC__process_payment_completed_for_order ($order_id, false);
 					}
 					else
 					{
-     				BWWC__log_event (__FILE__, __LINE__, "NOTE: Payment received (for BTC {$value_in_btc}), but not enough yet to cover the required total. Will be waiting for more. Bitcoins: now/total received/needed = {$value_in_btc}/{$paid_total_so_far}/{$order_total_in_btc}");
+     				BWWC__log_event (__FILE__, __LINE__, "NOTE: Payment received (for BTC {$value_in_btc}), but not enough yet to cover the required total. Will be waiting for more. Bitcoins: now/total received/needed = {$value_in_btc}/{$paid_total_so_far}/{$order_total_in_tpc}");
 					}
 
 			    // Reply '*ok*' so no more notifications are sent
@@ -896,7 +899,7 @@ function BWWC__process_payment_completed_for_order ($order_id, $bitcoins_paid=fa
 {
 
 	if ($bitcoins_paid)
-		update_post_meta ($order_id, 'bitcoins_paid_total', $bitcoins_paid);
+		update_post_meta ($order_id, 'templecoins_paid_total', $bitcoins_paid);
 
 	// Payment completed
 	// Make sure this logic is done only once, in case customer keep sending payments :)
